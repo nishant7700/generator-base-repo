@@ -1,6 +1,6 @@
 "use strict";
 const Generator = require("yeoman-generator");
-const chalk = require("chalk");
+// Const chalk = require("chalk");
 const yosay = require("yosay");
 
 module.exports = class extends Generator {
@@ -23,10 +23,13 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const componentName = this.props.componentName;
-    this.fs.copyTpl(this.templatePath(".env"), this.destinationPath(`.env`));
+    // Const componentName = this.props.componentName;
     this.fs.copyTpl(
-      this.templatePath(".env.development"),
+      this.templatePath(".env.production"),
+      this.destinationPath(`.env`)
+    );
+    this.fs.copyTpl(
+      this.templatePath(".env.local"),
       this.destinationPath(`.env.development`)
     );
     this.fs.copyTpl(
@@ -160,6 +163,6 @@ module.exports = class extends Generator {
   }
 
   install() {
-    // this.installDependencies();
+    // This.installDependencies();
   }
 };
